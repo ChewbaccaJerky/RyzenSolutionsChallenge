@@ -13,6 +13,7 @@ import pygal
 result = {}
 base_dir = os.getcwd()
 
+
 def search_keyword(root_dir, keyword):
     # Change directory to root_dir
     os.chdir(root_dir)
@@ -68,13 +69,16 @@ def main():
         return
 
     try:
+        # root will be used to truncate paths in search_keyword
         global root
         root = os.path.dirname(sys.argv[1])
         search_keyword(sys.argv[1], sys.argv[2])
     except Exception as e:
         print e
     else:
+        # Change Directory to your current directory
         os.chdir(base_dir)
+        # Generate Bar Chart
         generate_chart(result)
         print result
 
